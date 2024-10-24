@@ -45,15 +45,32 @@ def assoc_dictionary(dico, words):
             #print("finded2", finded)
     return finded
 
-print("result", assoc_dictionary(dictionary_ref, text2))
+#print("result", assoc_dictionary(dictionary_ref, text2))
 
+# compress the orginal text
 def lets_compress(text):
     splitting = splitting_text(text)
-    print("splitting", splitting)
+    #print("splitting", splitting)
     associating = assoc_dictionary(dictionary_ref, splitting)
-    print("associating", associating)
+    #print("associating", associating)
     joining = joining_text(associating)
-    print("joining", joining)
+    #print("joining", joining)
     return joining
 
-print("compress", lets_compress(text3))
+#print("compress", lets_compress(text3))
+
+# decompress the original text
+inv_dictionary_ref = {v: k for k, v in dictionary_ref.items()}
+
+print("inv_dictionary_ref", inv_dictionary_ref)
+
+def lets_decompress(text):
+    splitting = splitting_text(text)
+    #print("splitting", splitting)
+    associating = assoc_dictionary(inv_dictionary_ref, splitting)
+    #print("associating", associating)
+    joining = joining_text(associating)
+    #print("joining", joining)
+    return joining
+
+print("lets_decompress", lets_decompress(text3))
