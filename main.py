@@ -1,6 +1,8 @@
+from collections import defaultdict
+
 text1 = "qu'elle est... » ). expert en utilisabilite des"
 
-dictionary_ref = {'texte': '1',
+dictionary_ref1 = {'texte': '1',
  'lorem': '2',
  'qui': '3',
  'donc': '4',
@@ -60,9 +62,8 @@ def lets_compress(text):
 #print("compress", lets_compress(text3))
 
 # decompress the original text
-inv_dictionary_ref = {v: k for k, v in dictionary_ref.items()}
-
-print("inv_dictionary_ref", inv_dictionary_ref)
+inv_dictionary_ref = {v: k for k, v in dictionary_ref1.items()}
+#print("inv_dictionary_ref", inv_dictionary_ref)
 
 def lets_decompress(text):
     splitting = splitting_text(text)
@@ -73,4 +74,22 @@ def lets_decompress(text):
     #print("joining", joining)
     return joining
 
-print("lets_decompress", lets_decompress(text3))
+#print("lets_decompress", lets_decompress(text3))
+# creating a new dict where value are the number of occurences of words in the text
+def create_dico(text):
+    dictionary_ref2 = defaultdict(int) # creating values starting from 0
+    split_text = text.split()
+    print(split_text)
+    for words in split_text:
+        dictionary_ref2[words] += 1
+    return dict(dictionary_ref2)
+
+    # *** FOR LOOP METHOD ***
+    # for word in split_text:
+    #     if word in dictionary_ref2 :
+    #         dictionary_ref2[word] += 1
+    #     else :
+    #         dictionary_ref2[word] = 1
+    # return dictionary_ref2
+
+print(create_dico(text3))
